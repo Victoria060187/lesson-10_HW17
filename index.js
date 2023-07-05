@@ -20,17 +20,16 @@ function displayProducts(category) {
   productsList.textContent = '';
   productInfo.textContent = '';
 
-  categories[category].forEach((product, index) => {
+  categories[category].forEach((product) => {
     const listItem = document.createElement('li');
     listItem.textContent = product.name;
-    listItem.onclick = () => displayProductInfo(category, index);
+    listItem.addEventListener('click', () => displayProductInfo(product));
     productsList.appendChild(listItem);
   });
 }
 
-function displayProductInfo(category, index) {
+function displayProductInfo(product) {
   const productInfo = document.getElementById('product-info');
-  const product = categories[category][index];
 
   productInfo.textContent = '';
 
@@ -45,7 +44,7 @@ function displayProductInfo(category, index) {
 
   const buyButton = document.createElement('button');
   buyButton.textContent = 'Buy it now';
-  buyButton.onclick = () => buyProduct(product);
+  buyButton.addEventListener('click', () => buyProduct(product));
 
   productInfo.appendChild(productName);
   productInfo.appendChild(productPrice);
@@ -54,8 +53,7 @@ function displayProductInfo(category, index) {
 }
 
 function buyProduct(product) {
-  alert(`You have just bought it: ${product.name}`);
-  displayProducts();
+  alert(`You have just bought: ${product.name}`);
 }
 
 const categoriesList = document.getElementsByClassName('category');
