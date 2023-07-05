@@ -54,6 +54,15 @@ function displayProductInfo(product) {
 
 function buyProduct(product) {
   alert(`You have just bought: ${product.name}`);
+  resetProgram();
+}
+
+function resetProgram() {
+  const productsList = document.getElementById('products');
+  const productInfo = document.getElementById('product-info');
+
+  productsList.textContent = '';
+  productInfo.textContent = '';
 }
 
 const categoriesList = document.getElementsByClassName('category');
